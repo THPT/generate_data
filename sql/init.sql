@@ -8,7 +8,7 @@ CREATE TABLE selling_items (
 	product_id text,
 	quantity int, 
 	revenue bigint, 
-	net_revenue double,
+	net_revenue double precision,
 	order_date timestamp with time zone
 );
 
@@ -46,4 +46,11 @@ CREATE TABLE order_statistics (
 	order_date timestamp with time zone,
 	revenue bigint,
 	total_order int
+);
+
+CREATE TABLE user_statistics (
+	id serial PRIMARY KEY NOT NULL,
+	user_id int,
+	order_date timestamp with time zone,
+	spend double precision
 );
