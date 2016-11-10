@@ -13,6 +13,8 @@ go get
 
 Usage
 ---
+Init database with file `sql/init.sql`
+
 Build project
 
 ```
