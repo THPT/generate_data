@@ -1,0 +1,11 @@
+# Build
+generate_data
+
+# Config
+config.yaml
+
+# OS File
+.DS_Store
+
+# Log
+log/*
