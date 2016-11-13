@@ -48,3 +48,20 @@ SELECT usr_spend.order_date, avg(usr_spend.spend)
 FROM usr_spend
 GROUP BY usr_spend.order_date
 ORDER BY usr_spend.order_date
+
+/* User: Pham Huynh Minh Triet (id:1886) - Report: 3 - When do people buy stuff the most (by hourdayweekdaymonth) (id:4956) - Hash: 88998e7 - Job ID:  */
+WITH time_range AS (
+	select generate_series('2016-10-13', '2016-11-13', '1 day'::interval) AS day_d
+),
+statis AS (
+	SELECT order_date::timestamp::date, count(*) AS total_order
+	FROM order_statistics
+	WHERE order_date >= '2016-10-13' AND order_date <= '2016-11-13'
+	GROUP BY order_date
+)
+SELECT date_trunc('day', time_range.day_d), COALESCE(SUM(total_order),0) as total_order
+FROM time_range
+LEFT JOIN statis ON time_range.day_d = statis.order_date
+GROUP BY date_trunc('day', time_range.day_d)
+ORDER BY date_trunc('day', time_range.day_d)
+

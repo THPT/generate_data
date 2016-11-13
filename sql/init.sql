@@ -1,3 +1,4 @@
+
 CREATE TABLE categories (
 	id serial PRIMARY KEY NOT NULL,
 	category_name text
@@ -31,7 +32,8 @@ CREATE TABLE users (
 	id serial PRIMARY KEY NOT NULL,
 	age int,
 	gender int, 
-	location text
+	location text,
+	created_at timestamp WITH time ZONE
 );
 
 CREATE TABLE product_ages (

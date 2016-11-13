@@ -36,10 +36,11 @@ type Product struct {
 }
 
 type User struct {
-	ID       int
-	Age      int
-	Gender   int
-	Location string
+	ID        int
+	Age       int
+	Gender    int
+	Location  string
+	CreatedAt time.Time
 }
 
 type ProductAge struct {
@@ -129,7 +130,7 @@ func Generate() {
 
 	//Import users
 	fmt.Println("Import Users")
-	query = `SELECT user_id as id, age, gender, location FROM user`
+	query = `SELECT user_id as id, age, gender, creation_date as created_at, location FROM user`
 	var users []User
 	err = inCon.Raw(query).Find(&users).Error
 	if err != nil {
