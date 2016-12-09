@@ -56,3 +56,31 @@ CREATE TABLE user_statistics (
 	order_date timestamp with time zone,
 	spend double precision
 );
+
+CREATE TABLE user_actives (
+	id serial PRIMARY KEY NOT NULL,
+	uuid text,
+	created_at timestamp with time zone
+);
+
+CREATE TABLE device_usages (
+	id serial PRIMARY KEY NOT NULL,
+	device_family text,
+	created_at timestamp WITH time ZONE,
+	time_usage bigint
+);
+
+CREATE TABLE device_sellings (
+	id serial PRIMARY KEY NOT NULL,
+	device_family text,
+	product_id text,
+	created_at timestamp WITH time ZONE,
+	time_usage bigint
+);
+
+CREATE TABLE video_sellings (
+	id serial PRIMARY KEY NOT NULL,
+	video_id text,
+	amount BIGINT,
+	created_at timestamp WITH time ZONE
+);
