@@ -84,3 +84,10 @@ CREATE TABLE video_sellings (
 	amount BIGINT,
 	created_at timestamp WITH time ZONE
 );
+
+CREATE TABLE video_view_counts (
+	id serial PRIMARY KEY NOT NULL,
+	video_id text,
+	view_count BIGINT,
+	created_at timestamp WITH time zone
+);
