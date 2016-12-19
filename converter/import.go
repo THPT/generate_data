@@ -64,6 +64,19 @@ type UserStatistic struct {
 	Spend     float64
 }
 
+type Video struct {
+	VideoID        string
+	Url            string
+	Category       string
+	Title          string
+	Description    string
+	ThumbnailImage string
+	PublishedTime  time.Time
+	ChannelId      string
+	ChannelTitle   string
+	ProductId      string
+}
+
 func Generate() {
 
 	inCon, er := openConnection(actionExport)
@@ -198,6 +211,23 @@ ORDER BY order_date
 
 	for _, userStatistic := range userStatistics {
 		err := ouCon.Create(&userStatistic).Error
+		if err != nil {
+			panic(err)
+		}
+	}
+
+	// Import categories
+	fmt.Println("Import categories")
+	query = `SELECT * FROM video`
+	var videos []Video
+	err = inCon.Raw(query).Scan(&videos).Error
+	if err != nil {
+		panic(err)
+	}
+
+	for _, video := range videos {
+		fmt.Println(video)
+		err := ouCon.Save(&video).Error
 		if err != nil {
 			panic(err)
 		}

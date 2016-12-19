@@ -91,3 +91,16 @@ CREATE TABLE video_view_counts (
 	view_count BIGINT,
 	created_at timestamp WITH time zone
 );
+
+CREATE TABLE videos (
+	video_id varchar(50),
+	url varchar(250),
+	category varchar(200),
+	title varchar(1000),
+	description varchar(2000),
+	thumbnail_image varchar(250),
+	published_time  timestamp WITH time zone,
+	channel_id varchar(50),
+	channel_title varchar(500),
+	product_id varchar(50)
+);
